@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 
-export default function Home() {
+const Home = () => {
   return (
     <div className="text-center space-y-4 pb-10">
       <div className="relative w-full h-screen">
@@ -21,7 +21,9 @@ export default function Home() {
       >
         Lohnt sich eine Solaranlage für Ihr Dach?
       </h2>
-      <p>Answer 5 quick questions to get an initial assessment.</p>
+      <p>
+        Beantworten Sie 5 kurze Fragen, um eine erste Einschätzung zu erhalten.
+      </p>
       <Link
         href="/survey"
         className="px-4 py-2 bg-blue-600 text-white rounded-lg"
@@ -31,4 +33,6 @@ export default function Home() {
       </Link>
     </div>
   );
-}
+};
+
+export default Home;
