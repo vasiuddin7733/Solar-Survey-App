@@ -79,6 +79,7 @@ const Survey = () => {
           <button
             type="submit"
             className="px-4 py-2 bg-green-600 text-white rounded-lg"
+            style={{ background: "oklch(90.5% 0.182 98.111)" }}
           >
             {step === 5 ? (loading ? "Submitting..." : "Submit") : "Next"}
           </button>

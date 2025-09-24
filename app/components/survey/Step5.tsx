@@ -13,7 +13,7 @@ interface StepProps {
 const Step5: FC<StepProps> = ({ register, errors }) => {
   return (
     <div className="flex bg-white shadow-md rounded-lg overflow-hidden">
-      <div className="md:w-1/2 relative h-64 md:h-auto">
+      <div className="md:w-1/2 relative h-64 md:h-128">
         <Image
           src="/roof1.jpg"
           alt="Property illustration"
