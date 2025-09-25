@@ -5,7 +5,6 @@ import { useSearchParams } from "next/navigation";
 const ResultPage = () => {
   const params = useSearchParams();
   const answer = params.get("answer");
-  console.log("Answer from query params:", answer);
 
   return (
     <div className="text-center space-y-4">

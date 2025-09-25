@@ -21,7 +21,9 @@ const SolarOptions: React.FC<SolarOptionsProps> = ({
       <select
         className="w-full border p-2 rounded"
         {...(register ? register : {})}
+        defaultValue=""
       >
+        <option value="">-- Select --</option>
         {options.map((opt, idx) => (
           <option key={idx} value={opt}>
             {opt}
