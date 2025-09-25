@@ -31,15 +31,15 @@ const Step2: FC<StepProps> = ({ register, errors }) => {
                 type="checkbox"
                 id={`roof-${dir}`}
                 value={dir}
-                {...register("roofOrientation")}
+                {...register("ausrichtung")}
                 className="w-4 h-4"
               />
               <span>{dir}</span>
             </label>
           ))}
         </div>
-        {errors.roofOrientation && (
-          <p className="text-red-500 mt-1">{errors.roofOrientation.message}</p>
+        {errors.ausrichtung && (
+          <p className="text-red-500 mt-1">{errors.ausrichtung.message}</p>
         )}
       </div>
     </div>

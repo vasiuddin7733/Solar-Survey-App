@@ -6,11 +6,11 @@ import { useRouter } from "next/navigation";
 import { Step1, Step2, Step3, Step4, Step5 } from "@/components/survey";
 
 export type SurveyData = {
-  propertyType: string;
-  roofOrientation: string[];
-  roofAge: string;
-  electricityUsage: string;
-  otherSolutions: string;
+  immobilienart: string;
+  ausrichtung: string[];
+  Dachalter: string;
+  stromverbrauch: string;
+  solaranlage: string;
   name?: string;
   email?: string;
   phone?: string;
@@ -23,11 +23,11 @@ const Survey = () => {
 
   const methods = useForm<SurveyData>({
     defaultValues: {
-      propertyType: "",
-      roofOrientation: [],
-      roofAge: "",
-      electricityUsage: "",
-      otherSolutions: "",
+      immobilienart: "",
+      ausrichtung: [],
+      Dachalter: "",
+      stromverbrauch: "",
+      solaranlage: "",
       name: "",
       email: "",
       phone: "",
@@ -37,51 +37,79 @@ const Survey = () => {
   const { handleSubmit, register, formState } = methods;
 
   const onSubmit = async (data: SurveyData) => {
+    console.log(data);
+
     if (step < 5) {
       setStep(step + 1);
       return;
     }
     setLoading(true);
-    const res = await fetch("@/app/api/solar", {
-      method: "POST",
-      body: JSON.stringify(data),
-    });
-    const result = await res.json();
-    router.push(`/result?answer=${result.answer}`);
+    try {
+      const res = await fetch("/api/solar", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+      const result = await res.json();
+      console.log("API Response:", result);
+
+      router.push(`/result?answer=${result.answer}`);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
-    <FormProvider {...methods}>
-      <form
-        onSubmit={handleSubmit(onSubmit)}
-        className="space-y-6 max-w-4xl mx-auto mt-24"
-      >
-        {step === 1 && <Step1 register={register} errors={formState.errors} />}
-        {step === 2 && <Step2 register={register} errors={formState.errors} />}
-        {step === 3 && <Step3 register={register} errors={formState.errors} />}
-        {step === 4 && <Step4 register={register} errors={formState.errors} />}
-        {step === 5 && <Step5 register={register} errors={formState.errors} />}
-
-        <div className="flex justify-between mt-6">
-          {step > 1 && (
-            <button
-              type="button"
-              onClick={() => setStep(step - 1)}
-              className="px-4 py-2 bg-gray-300 rounded-lg"
-            >
-              zurück
-            </button>
-          )}
-          <button
-            type="submit"
-            className="px-4 py-2 bg-green-600 text-white rounded-lg"
-            style={{ background: "oklch(90.5% 0.182 98.111)" }}
+    <div className="relative w-full bg-gradient-to-r from-yellow-400 to-yellow-500 overflow-hidden">
+      <div className="absolute bottom-0 left-0 w-full h-20 bg-yellow-300 transform -skew-y-3" />
+      <div className="relative z-10 max-w-4xl mx-auto py-16">
+        <FormProvider {...methods}>
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            className="space-y-6 bg-white shadow-lg rounded-xl p-6"
           >
-            {step === 5 ? (loading ? "Submitting..." : "einreichen") : "weiter"}
-          </button>
-        </div>
-      </form>
-    </FormProvider>
+            {step === 1 && (
+              <Step1 register={register} errors={formState.errors} />
+            )}
+            {step === 2 && (
+              <Step2 register={register} errors={formState.errors} />
+            )}
+            {step === 3 && (
+              <Step3 register={register} errors={formState.errors} />
+            )}
+            {step === 4 && (
+              <Step4 register={register} errors={formState.errors} />
+            )}
+            {step === 5 && (
+              <Step5 register={register} errors={formState.errors} />
+            )}
+
+            <div className="flex justify-between mt-6">
+              {step > 1 && (
+                <button
+                  type="button"
+                  onClick={() => setStep(step - 1)}
+                  className="px-4 py-2 bg-gray-300 rounded-lg hover:bg-gray-400"
+                >
+                  zurück
+                </button>
+              )}
+              <button
+                type="submit"
+                className="px-4 py-2 text-white rounded-lg shadow"
+                style={{ background: "oklch(90.5% 0.182 98.111)" }}
+              >
+                {step === 5
+                  ? loading
+                    ? "Einreichen..."
+                    : "einreichen"
+                  : "weiter"}
+              </button>
+            </div>
+          </form>
+        </FormProvider>
+      </div>
+    </div>
   );
 };
 

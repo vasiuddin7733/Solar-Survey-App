@@ -2,6 +2,8 @@ import { FC } from "react";
 import Image from "next/image";
 import { UseFormRegister, FieldErrors } from "react-hook-form";
 import { SurveyData } from "@/survey/page";
+import SolarOptions from "./SolarOptions";
+import { solarOptions } from "./solarOptions";
 
 interface StepProps {
   register: UseFormRegister<SurveyData>;
@@ -24,25 +26,14 @@ const Step5: FC<StepProps> = ({ register, errors }) => {
         <h2 className="text-2xl font-bold mb-4">
           Step 5: Kontaktdaten und weitere Lösungen
         </h2>
-
-        <label htmlFor="otherSolutions" className="block font-medium mb-1">
-          Interessiert an anderen Energielösungen?
-        </label>
-        <select
-          id="otherSolutions"
-          {...register("otherSolutions", {
-            required: "Please select an option",
+        <SolarOptions
+          label="Interessiert an anderen Energielösungen?:"
+          options={solarOptions.solaranlage}
+          register={register("Dachalter", {
+            required: "Bitte wählen Sie die Art der Immobilie aus",
           })}
-          className="w-full border p-2 rounded"
-        >
-          <option value="">-- Select --</option>
-          <option value="yes">Ja</option>
-          <option value="no">Nein</option>
-          <option value="dontknow">Weis nicht</option>
-        </select>
-        {errors.otherSolutions && (
-          <p className="text-red-500 mt-1">{errors.otherSolutions.message}</p>
-        )}
+          error={errors.solaranlage?.message?.toString()}
+        />
 
         <div className="mt-4 space-y-2 border-t pt-4">
           <h3 className="font-medium">Kontakt (optional)</h3>
