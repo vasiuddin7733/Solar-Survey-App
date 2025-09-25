@@ -2,6 +2,8 @@ import { FC } from "react";
 import Image from "next/image";
 import { UseFormRegister, FieldErrors } from "react-hook-form";
 import { SurveyData } from "@/survey/page";
+import SolarOptions from "./SolarOptions";
+import { solarOptions } from "./solarOptions";
 
 interface StepProps {
   register: UseFormRegister<SurveyData>;
@@ -22,23 +24,14 @@ const Step3: FC<StepProps> = ({ register, errors }) => {
 
       <div className="md:w-1/2 p-6 flex flex-col justify-center space-y-4">
         <h2 className="text-2xl font-bold">Step 3: Dachalter</h2>
-        <label htmlFor="roofAge" className="block font-medium mb-1">
-          Dachalter:
-        </label>
-        <select
-          id="roofAge"
-          {...register("roofAge", { required: "Please select roof age" })}
-          className="w-full border p-2 rounded"
-        >
-          <option value="">-- Select --</option>
-          <option value="under5">Unter 5 Jahre</option>
-          <option value="5to15">5–15 Jahre</option>
-          <option value="over15">Über 15 Jahre</option>
-          <option value="over15">Keine Angabe</option>
-        </select>
-        {errors.roofAge && (
-          <p className="text-red-500 mt-1">{errors.roofAge.message}</p>
-        )}
+        <SolarOptions
+          label="Dachalter:"
+          options={solarOptions.dachalter}
+          register={register("Dachalter", {
+            required: "Bitte wählen Sie die Art der Immobilie aus",
+          })}
+          error={errors.Dachalter?.message?.toString()}
+        />
       </div>
     </div>
   );

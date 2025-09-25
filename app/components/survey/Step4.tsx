@@ -2,6 +2,8 @@ import { FC } from "react";
 import Image from "next/image";
 import { UseFormRegister, FieldErrors } from "react-hook-form";
 import { SurveyData } from "@/survey/page";
+import SolarOptions from "./SolarOptions";
+import { solarOptions } from "./solarOptions";
 
 interface StepProps {
   register: UseFormRegister<SurveyData>;
@@ -22,25 +24,14 @@ const Step4: FC<StepProps> = ({ register, errors }) => {
 
       <div className="md:w-1/2 p-6 flex flex-col justify-center space-y-4">
         <h2 className="text-2xl font-bold">Step 4: Stromverbrauch</h2>
-        <label htmlFor="electricityUsage" className="block font-medium mb-1">
-          Stromverbrauch:
-        </label>
-        <select
-          id="electricityUsage"
-          {...register("electricityUsage", {
-            required: "Please select electricity usage",
+        <SolarOptions
+          label="Stromverbrauch:"
+          options={solarOptions.stromverbrauch}
+          register={register("Dachalter", {
+            required: "Bitte wählen Sie die Art der Immobilie aus",
           })}
-          className="w-full border p-2 rounded"
-        >
-          <option value="">-- Select --</option>
-          <option value="under3000">Unter 3.000 kWh</option>
-          <option value="3000to5000">3.000–5.000 kWh</option>
-          <option value="over5000">Over 5,000 kWh</option>
-          <option value="keineAngabewn">keine Angabe</option>
-        </select>
-        {errors.electricityUsage && (
-          <p className="text-red-500 mt-1">{errors.electricityUsage.message}</p>
-        )}
+          error={errors.stromverbrauch?.message?.toString()}
+        />
       </div>
     </div>
   );
