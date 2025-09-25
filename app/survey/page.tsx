@@ -8,7 +8,7 @@ import { Step1, Step2, Step3, Step4, Step5 } from "@/components/survey";
 export type SurveyData = {
   immobilienart: string;
   ausrichtung: string[];
-  Dachalter: string;
+  dachalter: string;
   stromverbrauch: string;
   solaranlage: string;
   name?: string;
@@ -25,7 +25,7 @@ const Survey = () => {
     defaultValues: {
       immobilienart: "",
       ausrichtung: [],
-      Dachalter: "",
+      dachalter: "",
       stromverbrauch: "",
       solaranlage: "",
       name: "",
@@ -37,12 +37,11 @@ const Survey = () => {
   const { handleSubmit, register, formState } = methods;
 
   const onSubmit = async (data: SurveyData) => {
-    console.log(data);
-
     if (step < 5) {
       setStep(step + 1);
       return;
     }
+
     setLoading(true);
     try {
       const res = await fetch("/api/solar", {
@@ -50,9 +49,11 @@ const Survey = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
       });
-      const result = await res.json();
-      console.log("API Response:", result);
 
+      const result = await res.json();
+      console.log("📩 API Response:", result);
+
+      // Navigate to result page with mock answer (could be "yes/no" or mockData)
       router.push(`/result?answer=${result.answer}`);
     } finally {
       setLoading(false);
@@ -84,7 +85,12 @@ const Survey = () => {
               <Step5 register={register} errors={formState.errors} />
             )}
 
-            <div className="flex justify-between mt-6">
+            {/* Navigation buttons */}
+            <div
+              className={`flex mt-6 ${
+                step === 1 ? "justify-end" : "justify-between"
+              }`}
+            >
               {step > 1 && (
                 <button
                   type="button"

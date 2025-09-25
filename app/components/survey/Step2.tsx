@@ -2,6 +2,7 @@ import { FC } from "react";
 import { UseFormRegister, FieldErrors } from "react-hook-form";
 import Image from "next/image";
 import { SurveyData } from "@/survey/page";
+import { solarOptions } from "./solarOptions";
 
 interface StepProps {
   register: UseFormRegister<SurveyData>;
@@ -25,13 +26,17 @@ const Step2: FC<StepProps> = ({ register, errors }) => {
         </h2>
         <p>Wählen Sie eine oder mehrere Optionen aus:</p>
         <div className="flex flex-col space-y-2 mt-2">
-          {["Süd", "West", "Ost", "Nord"].map((dir) => (
+          {solarOptions?.ausrichtung?.map((dir) => (
             <label key={dir} className="flex items-center space-x-2">
               <input
                 type="checkbox"
                 id={`roof-${dir}`}
                 value={dir}
-                {...register("ausrichtung")}
+                {...register("ausrichtung", {
+                  validate: (value) =>
+                    value.length > 0 ||
+                    "Bitte wählen Sie mindestens eine Option aus",
+                })}
                 className="w-4 h-4"
               />
               <span>{dir}</span>

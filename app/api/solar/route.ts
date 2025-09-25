@@ -1,27 +1,22 @@
+// app/api/solar/route.ts
 import { NextResponse } from "next/server";
-import { surveySchema } from "@/lib/validation";
+import { SurveyData } from "@/survey/page"; // <- reuse your type if possible
 
-export function POST(req: Request) {
+export async function POST(req: Request) {
   console.log("📩 Received request at /api/solar");
 
   try {
-    console.log("📝 Request body:", req);
+    // 1. Parse request body
+    const body = (await req.json()) as SurveyData;
 
-    // Validate input with Zod
-    // const parsed = surveySchema.safeParse(body);
-    // if (!parsed.success) {
-    //   console.error("❌ Validation failed:", parsed.error.flatten());
-    //   return NextResponse.json(
-    //     { error: parsed.error.flatten() },
-    //     { status: 400 }
-    //   );
-    // }
+    // 2. Here you can run validation, DB save, or call external API
+    // For now, just return the same form data + a mock result
+    const response = {
+      ...body,
+      answer: Math.random() > 0.5 ? "yes" : "no", // demo extra field
+    };
 
-    // Random Yes/No result
-    const answer = Math.random() > 0.5 ? "yes" : "no";
-
-    console.log("✅ Valid input, returning:", answer);
-    return NextResponse.json({ answer });
+    return NextResponse.json(response);
   } catch (err) {
     console.error("⚠️ Error handling request:", err);
     return NextResponse.json(

@@ -27,10 +27,10 @@ const Step3: FC<StepProps> = ({ register, errors }) => {
         <SolarOptions
           label="Dachalter:"
           options={solarOptions.dachalter}
-          register={register("Dachalter", {
-            required: "Bitte wählen Sie die Art der Immobilie aus",
+          register={register("dachalter", {
+            required: "Bitte wählen Sie das Alter des Daches aus.",
           })}
-          error={errors.Dachalter?.message?.toString()}
+          error={errors.dachalter?.message?.toString()}
         />
       </div>
     </div>

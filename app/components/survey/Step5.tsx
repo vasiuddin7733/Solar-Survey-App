@@ -29,8 +29,8 @@ const Step5: FC<StepProps> = ({ register, errors }) => {
         <SolarOptions
           label="Interessiert an anderen Energielösungen?:"
           options={solarOptions.solaranlage}
-          register={register("Dachalter", {
-            required: "Bitte wählen Sie die Art der Immobilie aus",
+          register={register("solaranlage", {
+            required: "Bitte wählen Sie eine Option aus.",
           })}
           error={errors.solaranlage?.message?.toString()}
         />
