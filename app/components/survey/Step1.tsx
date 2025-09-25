@@ -1,5 +1,3 @@
-"use client";
-
 import { FC } from "react";
 import Image from "next/image";
 import { UseFormRegister, FieldErrors } from "react-hook-form";
@@ -22,21 +20,21 @@ const Step1: FC<StepProps> = ({ register, errors }) => {
         />
       </div>
       <div className="md:w-1/2 p-6 flex flex-col justify-center">
-        <h2 className="text-2xl font-bold mb-4">Step 1: Property Type</h2>
+        <h2 className="text-2xl font-bold mb-4">Step 1: Art der Immobilie</h2>
         <label htmlFor="propertyType" className="block">
-          Property type:
+          Art der Immobilie:
         </label>
         <select
           id="propertyType"
           {...register("propertyType", {
-            required: "Please select property type",
+            required: "Bitte wählen Sie die Art der Immobilie aus",
           })}
           className="w-full border p-2 rounded mt-2"
         >
           <option value="">-- Select --</option>
-          <option value="single">Single-family home</option>
-          <option value="multi">Multi-family home</option>
-          <option value="commercial">Commercial property</option>
+          <option value="single">Einfamilienhaus</option>
+          <option value="multi">Mehrfamilienhaus</option>
+          <option value="commercial">Gewerbeimmobilie</option>
         </select>
         {errors.propertyType && (
           <p className="text-red-500 mt-1">{errors.propertyType.message}</p>
