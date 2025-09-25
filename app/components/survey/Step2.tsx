@@ -1,5 +1,3 @@
-"use client";
-
 import { FC } from "react";
 import { UseFormRegister, FieldErrors } from "react-hook-form";
 import Image from "next/image";
@@ -15,17 +13,19 @@ const Step2: FC<StepProps> = ({ register, errors }) => {
     <div className="flex bg-white shadow-md rounded-lg overflow-hidden">
       <div className="md:w-1/2 relative h-64 md:h-128">
         <Image
-          src="/roof1.jpg"
+          src="/direction.jpg"
           alt="Property illustration"
           fill
-          className="object-cover"
+          className="object-fit"
         />
       </div>
       <div className="md:w-1/2 p-6 flex flex-col justify-center">
-        <h2 className="text-2xl font-bold mb-4">Step 2: Roof Orientation</h2>
-        <p>Select one or more:</p>
+        <h2 className="text-2xl font-bold mb-4">
+          Step 2: Ausrichtung des Daches
+        </h2>
+        <p>Wählen Sie eine oder mehrere Optionen aus:</p>
         <div className="flex flex-col space-y-2 mt-2">
-          {["South", "West", "East", "North"].map((dir) => (
+          {["Süd", "West", "Ost", "Nord"].map((dir) => (
             <label key={dir} className="flex items-center space-x-2">
               <input
                 type="checkbox"

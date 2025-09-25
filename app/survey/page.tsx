@@ -3,11 +3,7 @@
 import { useState } from "react";
 import { useForm, FormProvider } from "react-hook-form";
 import { useRouter } from "next/navigation";
-import Step1 from "@/components/survey/Step1";
-import Step2 from "@/components/survey/Step2";
-import Step3 from "@/components/survey/Step3";
-import Step4 from "@/components/survey/Step4";
-import Step5 from "@/components/survey/Step5";
+import { Step1, Step2, Step3, Step4, Step5 } from "@/components/survey";
 
 export type SurveyData = {
   propertyType: string;
@@ -46,7 +42,7 @@ const Survey = () => {
       return;
     }
     setLoading(true);
-    const res = await fetch("/api/submit", {
+    const res = await fetch("@/app/api/solar", {
       method: "POST",
       body: JSON.stringify(data),
     });
@@ -73,7 +69,7 @@ const Survey = () => {
               onClick={() => setStep(step - 1)}
               className="px-4 py-2 bg-gray-300 rounded-lg"
             >
-              Back
+              zurück
             </button>
           )}
           <button
@@ -81,7 +77,7 @@ const Survey = () => {
             className="px-4 py-2 bg-green-600 text-white rounded-lg"
             style={{ background: "oklch(90.5% 0.182 98.111)" }}
           >
-            {step === 5 ? (loading ? "Submitting..." : "Submit") : "Next"}
+            {step === 5 ? (loading ? "Submitting..." : "einreichen") : "weiter"}
           </button>
         </div>
       </form>
