@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useForm, FormProvider } from "react-hook-form";
 import { useRouter } from "next/navigation";
-import { Step1, Step2, Step3, Step4, Step5 } from "@/components/survey";
+import { Step1, Step2, Step3, Step4, Step5, Step6 } from "@/components/survey";
 
 export type SurveyData = {
   immobilienart: string;
@@ -37,7 +37,7 @@ const Survey = () => {
   const { handleSubmit, register, formState } = methods;
 
   const onSubmit = async (data: SurveyData) => {
-    if (step < 5) {
+    if (step < 6) {
       setStep(step + 1);
       return;
     }
@@ -53,7 +53,6 @@ const Survey = () => {
       const result = await res.json();
       console.log("📩 API Response:", result);
 
-      // Navigate to result page with mock answer (could be "yes/no" or mockData)
       router.push(`/result?answer=${result.answer}`);
     } finally {
       setLoading(false);
@@ -84,8 +83,9 @@ const Survey = () => {
             {step === 5 && (
               <Step5 register={register} errors={formState.errors} />
             )}
-
-            {/* Navigation buttons */}
+            {step === 6 && (
+              <Step6 register={register} errors={formState.errors} />
+            )}
             <div
               className={`flex mt-6 ${
                 step === 1 ? "justify-end" : "justify-between"
@@ -105,7 +105,7 @@ const Survey = () => {
                 className="px-4 py-2 text-white rounded-lg shadow"
                 style={{ background: "oklch(90.5% 0.182 98.111)" }}
               >
-                {step === 5
+                {step === 6
                   ? loading
                     ? "Einreichen..."
                     : "einreichen"

@@ -22,7 +22,7 @@ const Step2: FC<StepProps> = ({ register, errors }) => {
       </div>
       <div className="md:w-1/2 p-6 flex flex-col justify-center">
         <h2 className="text-2xl font-bold mb-4">
-          Step 2: Ausrichtung des Daches
+          * Step 2: Ausrichtung des Daches
         </h2>
         <p>Wählen Sie eine oder mehrere Optionen aus:</p>
         <div className="flex flex-col space-y-2 mt-2">

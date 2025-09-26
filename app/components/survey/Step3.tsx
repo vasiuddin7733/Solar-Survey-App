@@ -23,9 +23,8 @@ const Step3: FC<StepProps> = ({ register, errors }) => {
       </div>
 
       <div className="md:w-1/2 p-6 flex flex-col justify-center space-y-4">
-        <h2 className="text-2xl font-bold">Step 3: Dachalter</h2>
+        <h2 className="text-2xl font-bold"> * Step 3: Dachalter</h2>
         <SolarOptions
-          label="Dachalter:"
           options={solarOptions.dachalter}
           register={register("dachalter", {
             required: "Bitte wählen Sie das Alter des Daches aus.",
