@@ -23,9 +23,8 @@ const Step4: FC<StepProps> = ({ register, errors }) => {
       </div>
 
       <div className="md:w-1/2 p-6 flex flex-col justify-center space-y-4">
-        <h2 className="text-2xl font-bold">Step 4: Stromverbrauch</h2>
+        <h2 className="text-2xl font-bold">* Step 4: Stromverbrauch</h2>
         <SolarOptions
-          label="Stromverbrauch:"
           options={solarOptions.stromverbrauch}
           register={register("stromverbrauch", {
             required: "Bitte wählen Sie den Stromverbrauch aus.",

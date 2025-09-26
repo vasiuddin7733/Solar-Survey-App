@@ -24,37 +24,15 @@ const Step5: FC<StepProps> = ({ register, errors }) => {
 
       <div className="md:w-1/2 p-6 flex flex-col justify-center space-y-4">
         <h2 className="text-2xl font-bold mb-4">
-          Step 5: Kontaktdaten und weitere Lösungen
+          * Step 5: Kontaktdaten und weitere Lösungen
         </h2>
         <SolarOptions
-          label="Interessiert an anderen Energielösungen?:"
           options={solarOptions.solaranlage}
           register={register("solaranlage", {
             required: "Bitte wählen Sie eine Option aus.",
           })}
           error={errors.solaranlage?.message?.toString()}
         />
-
-        <div className="mt-4 space-y-2 border-t pt-4">
-          <h3 className="font-medium">Kontakt (optional)</h3>
-          <input
-            {...register("name")}
-            placeholder="Name"
-            className="w-full border p-2 rounded mt-1"
-          />
-          <input
-            {...register("email")}
-            type="email"
-            placeholder="E-Mail"
-            className="w-full border p-2 rounded mt-1"
-          />
-          <input
-            {...register("phone")}
-            type="tel"
-            placeholder="Telefon"
-            className="w-full border p-2 rounded mt-1"
-          />
-        </div>
       </div>
     </div>
   );

@@ -21,7 +21,7 @@ const Header: FC = () => {
             <Link href="/" className="text-gray-600 hover:text-gray-900">
               Home
             </Link>
-            <Link href="/kontakt" className="text-gray-600 hover:text-gray-900">
+            <Link href="/contact" className="text-gray-600 hover:text-gray-900">
               Kontakt
             </Link>
             <Link href="/about" className="text-gray-600 hover:text-gray-900">

@@ -11,12 +11,17 @@ const ResultPage = () => {
       {answer === "yes" ? (
         <>
           <h1 className="text-2xl font-bold text-green-600">Yes! 🎉</h1>
-          <p>Your roof is a great candidate for solar energy.</p>
+          <p>
+            Ihr Dach eignet sich hervorragend für die Nutzung von Solarenergie.
+          </p>
         </>
       ) : (
         <>
           <h1 className="text-2xl font-bold text-red-600">Not ideal 😕</h1>
-          <p>It seems solar might not be worth it for your roof right now.</p>
+          <p>
+            Es scheint, dass Solarenergie für Ihr Dach derzeit nicht lohnenswert
+            ist.
+          </p>
         </>
       )}
     </div>
