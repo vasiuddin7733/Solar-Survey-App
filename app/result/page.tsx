@@ -1,10 +1,16 @@
 "use client";
 
-import { useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
 
 const ResultPage = () => {
-  const params = useSearchParams();
-  const answer = params.get("answer");
+  const [answer, setAnswer] = useState<string | null>(null);
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    setAnswer(params.get("answer"));
+  }, []);
+
+  if (!answer) return <p>Lädt...</p>;
 
   return (
     <div className="text-center space-y-4">
