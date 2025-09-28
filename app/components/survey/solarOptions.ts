@@ -1,6 +1,6 @@
 export const solarOptions = {
   immobilienart: ["Einfamilienhaus", "Mehrfamilienhaus", "Gewerbeimmobilie"],
-  ausrichtung: ["Süd", "West", "Ost", "Nord"],
+  ausrichtung: ["Süd", "West", "Ost", "Nord", "Keine Angabe"],
   dachalter: ["Unter 5 Jahre", "5–15 Jahre", "Über 15 Jahre", "Keine Angabe"],
   stromverbrauch: [
     "Unter 3.000 kWh",

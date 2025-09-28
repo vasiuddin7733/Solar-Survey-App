@@ -35,7 +35,7 @@ const Contact = () => {
 
         {isSubmitSuccessful && (
           <p className="text-green-700 font-medium mb-6">
-            ✅Vielen Dank! Wir haben Ihre Anfrage erhalten.
+            Vielen Dank! Wir haben Ihre Anfrage erhalten.
           </p>
         )}
 

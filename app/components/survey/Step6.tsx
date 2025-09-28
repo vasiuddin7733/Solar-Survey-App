@@ -14,7 +14,10 @@ const Step6: FC<StepProps> = ({ register, errors }) => {
 
       <div>
         <input
-          {...register("name")}
+          {...register("name", {
+            validate: (value) =>
+              !value || value.trim().length >= 2 || "Mindestens 2 Zeichen",
+          })}
           placeholder="Name"
           className="w-full border p-2 rounded mt-1"
         />
@@ -25,7 +28,12 @@ const Step6: FC<StepProps> = ({ register, errors }) => {
 
       <div>
         <input
-          {...register("email")}
+          {...register("email", {
+            validate: (value) =>
+              !value ||
+              /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value) ||
+              "Ungültige E-Mail-Adresse",
+          })}
           type="email"
           placeholder="E-Mail"
           className="w-full border p-2 rounded mt-1"
@@ -37,7 +45,12 @@ const Step6: FC<StepProps> = ({ register, errors }) => {
 
       <div>
         <input
-          {...register("phone")}
+          {...register("phone", {
+            validate: (value) =>
+              !value ||
+              /^[0-9+\-()\s]{6,}$/.test(value) ||
+              "Ungültige Telefonnummer",
+          })}
           type="tel"
           placeholder="Telefon"
           className="w-full border p-2 rounded mt-1"

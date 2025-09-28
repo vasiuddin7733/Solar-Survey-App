@@ -44,15 +44,14 @@ const Survey = () => {
 
     setLoading(true);
     try {
-      const res = await fetch("/api/solar", {
+      const res = await fetch("/api/submit", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
       });
 
       const result = await res.json();
-      console.log("📩 API Response:", result);
-
+      console.log("Response data:", result);
       router.push(`/result?answer=${result.answer}`);
     } finally {
       setLoading(false);
