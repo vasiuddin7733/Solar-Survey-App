@@ -16,6 +16,8 @@ export type SurveyData = {
   phone?: string;
 };
 
+const baseURL = process.env.NEXT_PUBLIC_BASE_URL || "";
+
 const Survey = () => {
   const router = useRouter();
   const [step, setStep] = useState(1);
@@ -44,7 +46,7 @@ const Survey = () => {
 
     setLoading(true);
     try {
-      const res = await fetch(`/api/submit`, {
+      const res = await fetch(`${baseURL}/api/submit`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
@@ -52,7 +54,7 @@ const Survey = () => {
 
       const result = await res.json();
       console.log("Response data:", result);
-      router.push(`/result?answer=${result.answer}`);
+      router.push(`${baseURL}/result?answer=${result.answer}`);
     } finally {
       setLoading(false);
     }
