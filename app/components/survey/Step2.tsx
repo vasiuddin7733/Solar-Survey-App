@@ -14,7 +14,7 @@ const Step2: FC<StepProps> = ({ register, errors }) => {
     <div className="flex bg-white shadow-md rounded-lg overflow-hidden">
       <div className="md:w-1/2 relative h-64 md:h-128">
         <Image
-          src="/direction.jpg"
+          src="./direction.jpg"
           alt="Property illustration"
           fill
           className="object-fit"

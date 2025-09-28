@@ -6,7 +6,7 @@ const Home = () => {
     <div className="text-center space-y-4 pb-10">
       <div className="relative w-full h-screen">
         <Image
-          src="/schoenergie_intro.jpg"
+          src="./schoenergie_intro.jpg"
           alt="Solar Panel"
           fill
           className="object-cover"
