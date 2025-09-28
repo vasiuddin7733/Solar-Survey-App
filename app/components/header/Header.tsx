@@ -21,6 +21,9 @@ const Header: FC = () => {
             <Link href="/" className="text-gray-600 hover:text-gray-900">
               Home
             </Link>
+            <Link href="/survey" className="text-gray-600 hover:text-gray-900">
+              Survey
+            </Link>
             <Link href="/contact" className="text-gray-600 hover:text-gray-900">
               Kontakt
             </Link>

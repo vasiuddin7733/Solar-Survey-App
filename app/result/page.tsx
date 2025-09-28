@@ -7,7 +7,7 @@ const ResultPage = () => {
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
-    setAnswer(params.get("answer"));
+    setAnswer(params?.get("answer"));
   }, []);
 
   if (!answer) return <p>Lädt...</p>;

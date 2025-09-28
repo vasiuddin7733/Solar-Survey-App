@@ -52,7 +52,7 @@ const Survey = () => {
 
       const result = await res.json();
       console.log("Response data:", result);
-      router.push(`/result?answer=${result.answer}`);
+      router.push(`./result?answer=${result.answer}`);
     } finally {
       setLoading(false);
     }
