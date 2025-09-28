@@ -10,7 +10,7 @@ const Header: FC = () => {
           <Link href="/">
             <div className="flex items-left">
               <Image
-                src="/logo-schoenergie.svg"
+                src="./logo-schoenergie.svg"
                 alt="Logo"
                 width={160}
                 height={320}
